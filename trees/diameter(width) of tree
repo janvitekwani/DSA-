@@ -1,0 +1,8 @@
+longest path between any 2 ending nodes
+  traverse the left subtree , then traverse the right subtree and then combine both of them 
+ op 1 - diameter(root.left)
+ op 2 - diameter(root.right)   
+ op 3 - heigth(root.left) +1 + height(root.right)   
+    
+    
+    
