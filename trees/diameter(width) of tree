@@ -4,5 +4,70 @@ longest path between any 2 ending nodes
  op 2 - diameter(root.right)   
  op 3 - heigth(root.left) +1 + height(root.right)   
     
-    
+
+
+// first approach takes O(n2) times  // because each time the function of height is called so total time complexity becomes n2 
+
+class Solution {
+     int height (TreeNode root)
+      {
+        if (root== null) return 0;
+
+        return (1+Math.max(height(root.left),height(root.right)));
+        
+      }
+    public int diameterOfBinaryTree(TreeNode root) {
+
+        if(root == null)
+        {
+            return 0;
+        }
+
+        int op1 = diameterOfBinaryTree(root.left);
+        int op2 = diameterOfBinaryTree(root.right);
+        int op3 = height(root.left)+ height(root.right) ;
+        int ans = Math.max(op1 ,Math.max(op2, op3));
+      
+      return ans;
+        
+    }
+}
+
+
+
+// second approach takes O(n) times , by keeping the track of the height and diameter together in pairs
+
+class Solution {
+    class Pair {
+        int first;
+        int second;
+        
+        Pair(int first, int second) {
+            this.first = first;
+            this.second = second;
+        }
+    }
+
+    Pair diameterfast(TreeNode root) { 
+        // base case
+        if (root == null) {
+            return new Pair(0, 0);
+        }
+
+        Pair left = diameterfast(root.left);
+        Pair right = diameterfast(root.right);
+
+        int op1 = left.first;
+        int op2 = right.first;
+        int op3 = left.second + right.second ;
+
+        Pair ans = new Pair(Math.max(op1, Math.max(op2, op3)), Math.max(left.second, right.second) + 1);
+
+        return ans;
+    }
+
+    public int diameterOfBinaryTree(TreeNode root) {
+        return diameterfast(root).first;
+    } 
+} 
     
