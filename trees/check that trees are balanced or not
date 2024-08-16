@@ -1,0 +1,40 @@
+class Solution {
+
+    class Pair {
+        boolean first;
+        int second;
+        
+        Pair(boolean first, int second) {
+            this.first = first;
+            this.second = second;
+        }
+    }
+      
+    Pair isBalancedfast(TreeNode root) {
+        if (root == null) {
+            return new Pair(true, 0);
+        }
+
+        Pair left = isBalancedfast(root.left);
+        Pair right = isBalancedfast(root.right);
+
+        boolean leftAns = left.first;
+        boolean rightAns = right.first;
+        boolean diff = Math.abs(left.second - right.second) <= 1;
+
+        Pair ans = new Pair(true, 0);
+        ans.second = Math.max(left.second, right.second) + 1;
+
+        if (leftAns && rightAns && diff) {
+            ans.first = true;
+        } else {
+            ans.first = false;
+        }
+
+        return ans;
+    }
+
+    public boolean isBalanced(TreeNode root) {
+        return isBalancedfast(root).first;
+    }
+}
