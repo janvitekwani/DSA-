@@ -1,0 +1,25 @@
+public static void levelOrder(Node root) {
+
+    Queue<Node> queue = new LinkedList<>();
+
+    queue.add(root);
+    Node current = null;
+
+    while(!queue.isEmpty()){
+
+        for(int i=1; i<= queue.size(); i++){
+            current = queue.poll();
+
+            // visit the current node 
+            System.out.print(current.data+" ");
+
+            // add next nodes to queue
+
+            if(current.left != null) queue.add(current.left);
+
+            if(current.right != null) queue.add(current.right);
+
+
+        }
+    }
+ }
