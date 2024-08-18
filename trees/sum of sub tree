@@ -1,0 +1,59 @@
+// in this code we need to check for every node that do it is equal to the sum of the subtree
+first we calculate for the left node  and then for right node and then for the current node
+
+so for current node we will check do that root.data == left.second+ right.second
+
+class Solution {
+        class pair {
+        boolean first;
+        int second;
+        
+        pair(boolean first, int second) {
+            this.first = first;
+            this.second = second;
+        }
+    }
+      
+      
+      pair isSumTreefast(Node root){
+           if(root == null)    return new pair(true,0);
+             
+          if(root.left == null && root.right == null)  return new pair(true , 0);
+          
+          
+          pair left = isSumTreefast(root.left);
+          pair right = isSumTreefast(root.right);
+          
+          boolean leftans = left.first;
+          boolean rightans = right.first;
+          
+          boolean value = root.data == left.second + right.second;
+          
+          pair ans = new pair (true ,0);
+           
+         if(left.first && value && right.first)
+         {
+              ans.first = true;
+              ans.second = 2*root.data;
+         }
+         
+         else  ans.first = false;
+         
+         
+         return ans;
+         
+         
+         
+           
+          
+             
+      }
+    
+    boolean isSumTree(Node root) {
+     
+        // Your code here
+        
+        return isSumTreefast(root).first;
+    }
+}
+
