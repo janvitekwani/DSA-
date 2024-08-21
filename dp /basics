@@ -1,0 +1,20 @@
+// dynamic programming 
+those how forget the past are contempt to repeat it  
+  // dp means learn from past means jo ek baar calculate kar chukka ho donot calculate it again 
+
+  // 1 appraoch top down approach - in this approach we are just using the recursion we just added one new thing that is memoisation 
+  // 2 buttom up approach - this is called tabulation method , in this there is now recursion we solve the questions in iterative way 
+  // 3 we will check that optimisation in space is possible or not 
+
+
+  
+when to apply the dp 
+  1) overlapping sub problem - means if u take out f(6) for the first time then no need to take it out again 
+  2) optimal sub problem - optimal solution of the bigger problem can be calculated by using the optimal solution of the smaller problem 
+
+  
+  
+
+
+  
+  
