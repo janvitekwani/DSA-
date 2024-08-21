@@ -7,11 +7,15 @@ those how forget the past are contempt to repeat it
   // 3 we will check that optimisation in space is possible or not 
 
 
+
+
   
 when to apply the dp when these both of the conditions gets satisfed 
   1) overlapping sub problem - means if u take out f(6) for the first time then no need to take it out again 
   2) optimal sub problem - optimal solution of the bigger problem can be calculated by using the optimal solution of the smaller problem 
 
+// if the value of 1 paramter change in dp then it is called the 1 dp 
+// if the value of 2 parameter change in dp then it is called the 2 dp 
   
   
 
