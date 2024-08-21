@@ -7,7 +7,80 @@
 // in this code we have previously calculated f(3) and f(2) so we donot need to calculate again it is actually repeation
 step 1: forget about the dp and write the recursive code
 step 2: now convert the recursive code into dp , so now in this recursive code we will add the memosation (1 create dp array , 2 create haspmap
-                       
-                       
+step 3: check do the ans is already stored in array or not 
 
+      // recursive code - copy and past the recursive code into fib into other fib code 
+//  class Solution {
+//     public int fib(int n) {
+      
+//       if(n==0 || n==1)
+//       {
+//         return n;
+//       }
+//       return fib(n-1)+fib(n-2);
+//     }
+// }
+
+
+// THIS IS TOPDOWN APPROACH  
+ // RECURSION + MEMORISATION 
+
+class Solution {
+    int fib (int n , int dp[]) {
+         // base case
+         if(n<=1)  // if(n==1 || n==0 )
+             return n;
+
+         // step 3: check if ans already exist 
+          if(dp[n] != -1)  return  dp[n];   
+  
+    
+    // step 2: replace ans or return with dp[n]
+      dp[n]= fib(n-1, dp)+fib(n-2, dp); 
+      return dp[n];   
+
+    }
+    public int fib(int n) {
+      int dp[]= new int [n+1];
+      // Initialize the dp array with -1 // so that we can check that dp is full of not 
+        for (int i = 0; i <= n; i++) {
+            dp[i] = -1;
+        }
+
+      
+      int ans = fib (n, dp);
+
+        return ans;
+    }
+}   
+
+
+// THIS IS  BOTTOM-UP APPROACH 
+  
+   class Solution {
+     int BottomUpSolve (int n)
+     {
+         // step 1 : create a dp array
+         int dp[] = new int [n+1];
+
+          for(int i=0;i<=n;i++)  dp[i]=-1; // in arraylist u can intialise it directly 
+         // step 2: observe the base case in the above solution 
+          dp[0] =0;
+          if(n==0) return dp[0];
+          dp[1] =1;
+         if(n==1) return dp[1];
+
+         // step 3: check that previous approach was how build 
+         for(int i=2;i<=n;i++)
+         {
+           dp[i] = dp[i-1] +dp [i-2];  
+         }
+
+         return dp[n];
+
+     }
+    public int fib(int n) {
+            return BottomUpSolve(n);
+    } 
+}
                        
