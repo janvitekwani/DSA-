@@ -8,7 +8,7 @@ those how forget the past are contempt to repeat it
 
 
   
-when to apply the dp 
+when to apply the dp when these both of the conditions gets satisfed 
   1) overlapping sub problem - means if u take out f(6) for the first time then no need to take it out again 
   2) optimal sub problem - optimal solution of the bigger problem can be calculated by using the optimal solution of the smaller problem 
 
