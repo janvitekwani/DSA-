@@ -1,0 +1,13 @@
+// we solved this number using the recursion 
+// f(5) recursion tree = f(4) + f(3)
+                         /\      / \ 
+                      f(3) f(2) f(2) f(1)
+                       f(1) =1 and f(0) =0 // this is the base case we assumed it 
+
+// in this code we have previously calculated f(3) and f(2) so we donot need to calculate again it is actually repeation
+step 1: forget about the dp and write the recursive code
+step 2: now convert the recursive code into dp , so now in this recursive code we will add the memosation (1 create dp array , 2 create haspmap
+                       
+                       
+
+                       
