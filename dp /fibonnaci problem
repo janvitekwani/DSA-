@@ -23,7 +23,8 @@ step 3: check do the ans is already stored in array or not
 
 
 // THIS IS TOPDOWN APPROACH  
- // RECURSION + MEMORISATION 
+ // RECURSION + MEMORISATION   // while creating the dp array u need to find what will be the size of dp array and what all base condition  
+                               // what all base conditions it can have 
 
 class Solution {
     int fib (int n , int dp[]) {
