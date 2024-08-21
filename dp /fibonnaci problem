@@ -89,6 +89,8 @@ class Solution {
 // SPACE OPTIMISED SOLUTION as we closely obsereved that we donot required it array we just required the create entire array
 // we just want to store the previous two array 
 
+
+/// IN SPACE OPTIMISATION U NEED TO CHECK THAT i VALUE DEPENDS ON WHICH PARAMETER AND THEN OPTIMSE THEM by finding the pattern 
 class Solution {
      int spaceoptimseSol (int n)
      {
