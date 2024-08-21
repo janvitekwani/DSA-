@@ -84,3 +84,39 @@ class Solution {
     } 
 }
                        
+
+// SPACE OPTIMISED SOLUTION as we closely obsereved that we donot required it array we just required the create entire array
+// we just want to store the previous two array 
+
+class Solution {
+     int spaceoptimseSol (int n)
+     {
+         //base case
+          int prev2 =0;
+          int prev1 = 1;
+      
+
+         // step 2: observe the base case in the above solution 
+         
+          if(n==0) return prev2;
+        
+         if(n==1) return prev1;
+         int curr=0;
+
+         // step 3: check that previous approach was how build 
+         for(int i=2;i<=n;i++)
+         {
+           curr= prev1 + prev2; 
+          
+           //shifting 
+           prev2 = prev1; 
+           prev1 = curr;
+         }
+
+         return curr;
+
+     }
+    public int fib(int n) {
+            return spaceoptimseSol(n);
+    } 
+}
