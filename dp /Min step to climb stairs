@@ -1,0 +1,122 @@
+// RECURSIVE CODE 
+
+
+class Solution {
+
+      
+      int solve (int [] cost ,int n ){
+
+      if(n==0)  return cost[0];
+        if(n==1)  return cost[1];
+
+
+        int ans = cost[n]+Math.min(solve(cost, n-1), solve(cost , n-2));
+
+        return ans;
+
+      }
+
+    public int minCostClimbingStairs(int[] cost) {
+
+        int n = cost.length;
+// we are using this to see whether we can start solving from  n-1 th stair or n-2 stairs
+        int ans = Math.min(solve(cost, n-1), solve (cost, n-2)); 
+        return ans;
+      
+        
+    }
+}
+
+
+
+// RECURSION AND MEMORISATION 
+
+class Solution {
+
+      
+      int solve (int [] cost ,int n , int [] dp){
+
+      if(n==0)  return cost[0];
+        if(n==1)  return cost[1];
+
+        if(dp[n]!=-1)
+        {
+            return dp[n];
+        }
+
+    
+
+
+         dp[n]= cost[n]+Math.min(solve(cost, n-1,dp), solve(cost , n-2,dp));
+
+        return dp[n];
+
+      }
+
+    public int minCostClimbingStairs(int[] cost) {
+      
+        int n = cost.length;
+         int dp [] = new int [n+1];
+         Arrays.fill(dp,-1);
+// we are using this to see whether we can start solving from  n-1 th stair or n-2 stairs
+        int ans = Math.min(solve(cost, n-1, dp), solve (cost, n-2, dp)); 
+        return ans;
+      
+        
+    }
+}
+
+
+
+
+// TABULATION CODE
+
+Java
+class Solution {
+
+      
+     
+
+    public int minCostClimbingStairs(int[] cost) {
+      int [] dp = new int [cost.length+1];
+        dp[0]= cost[0];
+        dp[1] = cost[1];
+       
+         for (int i=2 ;i<cost.length;i++)
+         {
+               dp[i] = cost[i]+Math.min(dp[i-1] , dp[i-2]);
+         }
+
+         return Math.min(dp[cost.length-1], dp[cost.length-2]); 
+      
+        
+    }
+}                                   
+
+
+// SPACE OPTIMISATION 
+
+
+class Solution {
+
+      
+     
+
+    public int minCostClimbingStairs(int[] cost) {
+      
+       int perv1= cost[0];
+       int perv2 = cost[1];
+        int curr = -1;
+         for (int i=2 ;i<cost.length;i++)
+         {
+             curr = cost[i] 
+             = cost[i]+Math.min(perv1, perv2);
+             perv1 = perv2;
+             perv2 = curr;
+         }
+
+         return Math.min(perv1, perv2); 
+      
+        
+    }
+}
