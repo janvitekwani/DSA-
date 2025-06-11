@@ -1,0 +1,45 @@
+// TABULATION AND MEMORASTION 
+// " same a coin change"  //
+ 
+class Solution {
+      int solveUsingRecursion(int n , int [] segment , int [] dp)
+      {
+          if(n==0)  return 0;
+          
+          if(n<0)  return Integer.MIN_VALUE;
+          
+          if(dp[n]!=-1)  return dp[n];
+          
+          int mini = Integer.MIN_VALUE;
+          for (int i=0;i<segment.length;i++)
+           {   
+               
+              int ans = solveUsingRecursion(n-segment[i] , segment , dp );
+              if(ans!=Integer.MIN_VALUE)
+              {
+                  mini= Math.max(mini, 1+ans);
+              }
+          }
+         
+         dp[n] = mini;  // After the loop ends, store the result
+        return dp[n];
+          
+          
+      }
+    
+    // Function to find the maximum number of cuts.
+    public int maximizeCuts(int n, int x, int y, int z) {
+        // Your code here
+        int dp [] = new int[n+1];
+        Arrays.fill(dp, -1);
+        int segment [] = new int [3];
+        
+        segment[0] = x; 
+        segment[1] = y ;
+        segment[2] = z;
+        int ans = solveUsingRecursion(n , segment, dp);
+        if(ans == Integer.MIN_VALUE)  return 0;
+        
+        return ans;
+    }
+}
