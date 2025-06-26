@@ -1,0 +1,115 @@
+// CREATING ADJACENCY LIST WHEN VERTEX IS GIVEN 
+
+ArrayList <ArrayList<Integer>> adjList = new ArrayList<>();
+        for (int i=0;i<n;i++)
+        {
+             adjList.add(new ArrayList<>());
+        }
+
+        // fill values
+        for (int i=0;i<edges.length;i++)
+        {
+            int u = edges[i][0];
+            int v = edges[i][1];
+            adjList.get(u).add(v);
+            adjList.get(v).add(u);
+        }
+
+//bfs                
+
+
+class Solution {
+    public boolean validPath(int n, int[][] edges, int source, int destination) {
+
+        ArrayList <ArrayList<Integer>> adjList = new ArrayList<>();
+        for (int i=0;i<n;i++)
+        {
+             adjList.add(new ArrayList<>());
+        }
+
+        // fill values
+        for (int i=0;i<edges.length;i++)
+        {
+            int u = edges[i][0];
+            int v = edges[i][1];
+            adjList.get(u).add(v);
+            adjList.get(v).add(u);
+        }
+
+        boolean visited[] = new boolean[n];
+        Queue <Integer> q = new LinkedList<>();
+
+          q.add(source);
+        visited[source]= true;
+
+        while(!q.isEmpty()){
+            int node = q.poll();
+            if(node == destination )  return true;
+
+            for(Integer it: adjList.get(node)){
+                if(visited[it]== false){
+                    visited[it]= true;
+                    q.add(it);
+                    
+                }
+
+            }
+
+        }
+
+        return false;
+        
+        
+        
+    }
+
+   
+    
+}        
+
+// dfs 
+
+
+class Solution {
+    public boolean validPath(int n, int[][] edges, int source, int destination) {
+
+        ArrayList <ArrayList<Integer>> adjList = new ArrayList<>();
+        for (int i=0;i<n;i++)
+        {
+             adjList.add(new ArrayList<>());
+        }
+
+        // fill values
+        for (int i=0;i<edges.length;i++)
+        {
+            int u = edges[i][0];
+            int v = edges[i][1];
+            adjList.get(u).add(v);
+            adjList.get(v).add(u);
+        }
+
+        boolean visited[] = new boolean[n];
+        boolean found = dfs(adjList , source , destination ,visited);
+        return found;
+        
+    }
+
+    public boolean dfs ( ArrayList <ArrayList<Integer>> adjList , int curNode, int dest , boolean [] v)
+    {
+        v[curNode] = true;
+        if(curNode== dest)  return true;
+
+        // visit all the neighbour of currnode
+        for(int neighbour : adjList.get(curNode))
+        {
+            if(!v[neighbour])
+            {
+                boolean found = dfs(adjList , neighbour, dest, v);
+                if(found)  return true;
+
+            }
+        }
+
+        return false;
+    }
+}
